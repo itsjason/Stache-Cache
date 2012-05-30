@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<configuration>
+  <configSections>
+	<section name="StacheCache.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+  </configSections>
+    <applicationSettings>
+		<StacheCache.Properties.Settings>
+			<setting name="CacheRegionName" serializeAs="String">
+				<value>test</value>
+			</setting>
+			<setting name="CacheServers" serializeAs="String">
+				<value>10.194.240.28</value>
+			</setting>
+			<setting name="CacheName" serializeAs="String">
+				<value>test</value>
+			</setting>
+			<setting name="CacheTimeout" serializeAs="String">
+				<value>2000</value>
+			</setting>
+			<setting name="UseRemoteCache" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="CacheMinutes" serializeAs="String">
+                <value>5</value>
+            </setting>
+		</StacheCache.Properties.Settings>
+	</applicationSettings>
+</configuration>

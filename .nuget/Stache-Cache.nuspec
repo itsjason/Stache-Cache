@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <version>1.0.0</version>
+    <authors>Jason Norris</authors>
+    <owners>Jason Norris</owners>
+    <projectUrl>https://github.com/itsjason/Stache-Cache</projectUrl>
+    <iconUrl>http://coderj.net/stache-cache.png</iconUrl>
+    <id>Stache-Cache</id>
+    <title>Stache-Cache</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Caching engine for local and/or remote AppFabric caches.</description>
+    <summary>Caching engine for local and/or remote AppFabric caches.</summary>
+    <copyright>2012</copyright>
+    <language>en-US</language>
+    <tags>Caching AppFabric</tags>
+  </metadata>
+</package>

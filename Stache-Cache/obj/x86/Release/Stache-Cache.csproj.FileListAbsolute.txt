@@ -1,0 +1,10 @@
+C:\DevProjects\Stache-Cache\Stache-Cache\bin\Release\Stache-Cache.dll.config
+C:\DevProjects\Stache-Cache\Stache-Cache\bin\Release\Stache-Cache.dll
+C:\DevProjects\Stache-Cache\Stache-Cache\bin\Release\Stache-Cache.pdb
+C:\DevProjects\Stache-Cache\Stache-Cache\bin\Release\Microsoft.ApplicationServer.Caching.Client.dll
+C:\DevProjects\Stache-Cache\Stache-Cache\bin\Release\Microsoft.ApplicationServer.Caching.Core.dll
+C:\DevProjects\Stache-Cache\Stache-Cache\bin\Release\Microsoft.WindowsFabric.Common.dll
+C:\DevProjects\Stache-Cache\Stache-Cache\bin\Release\Microsoft.WindowsFabric.Data.Common.dll
+C:\DevProjects\Stache-Cache\Stache-Cache\obj\x86\Release\ResolveAssemblyReference.cache
+C:\DevProjects\Stache-Cache\Stache-Cache\obj\x86\Release\Stache-Cache.dll
+C:\DevProjects\Stache-Cache\Stache-Cache\obj\x86\Release\Stache-Cache.pdb
