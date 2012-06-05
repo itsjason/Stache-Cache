@@ -15,17 +15,14 @@ namespace StacheCache
         private ICache Cache { get { return _factory.Cache; } }
         public bool UsingRemote { get { return Cache != null && Cache.IsRemote; } }
 
-        public CacheService()
+        public CacheService() : this(Properties.Settings.Default.CacheMinutes)
         {
             var s = Properties.Settings.Default;
-            _defaultCacheTime = s.CacheMinutes;
-            _cryptoProvider = new SHA1CryptoServiceProvider();
 
-            if(!s.UseRemoteCache)
-                _factory = new CacheFactory();
+            if (!s.UseRemoteCache)
+                return;
 
             var servers = s.CacheServers.Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries);
-
             _factory = new CacheFactory(servers, s.CacheTimeout, s.CacheName, s.CacheRegionName);
         }
 
@@ -89,41 +86,18 @@ namespace StacheCache
 
         public void Delete<T>(Expression<Func<T>> expr)
         {
-            try
-            {
-                Delete(GetKey(expr));
-            }
-            catch
-            {
-                _factory.MarkRemoteFailed();
-            }
-            
+            TryWithRemote(() => Delete(GetKey(expr)));
         }
 
         public void Clear()
         {
-            try
-            {
-                Cache.Clear();
-            }
-            catch
-            {
-                if (Cache.IsRemote)
-                    _factory.MarkRemoteFailed();
-            }
+            TryWithRemote(() => Cache.Clear());
         }
 
         public void Add(object item, string key, int expirationMinutes)
         {
-            try
-            {
-                if (expirationMinutes > 0)
-                    AddToCache(item, key, expirationMinutes);
-            }
-            catch
-            {
-                ; //nop
-            }
+            if (expirationMinutes > 0)
+                TryWithRemote(() => AddToCache(item, key, expirationMinutes));
         }
 
         public void Add(object item, string key)
@@ -136,17 +110,29 @@ namespace StacheCache
             Cache.Delete(key);
         }
 
-        //private static readonly BinaryFormatter Formatter = new BinaryFormatter();
-        private void AddToCache(object item, string key, int expirationMinutes)
+        private void TryWithRemote(Action action)
         {
             try
             {
-                Cache.AddToCache(item, key, expirationMinutes);
+                action();
             }
-            catch
+            catch (Exception)
             {
-                _factory.MarkRemoteFailed();
+                MarkRemoteFailed();
+                action();
             }
+        }
+
+        private void MarkRemoteFailed()
+        {
+            if(_factory != null)
+                _factory.MarkRemoteFailed();
+        }
+
+        //private static readonly BinaryFormatter Formatter = new BinaryFormatter();
+        private void AddToCache(object item, string key, int expirationMinutes)
+        {
+            TryWithRemote(() => Cache.AddToCache(item, key, expirationMinutes));
         }
 
         private object ReadFromCache(string key)

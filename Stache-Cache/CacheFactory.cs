@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using AppFabTest;
 
 namespace StacheCache
 {
@@ -14,7 +13,7 @@ namespace StacheCache
         private bool _remoteFailed;
         private DateTime _remoteFailedAt;
         private ICache _remoteCache, _localCache;
-        private int _retrySeconds;
+        private readonly int _retrySeconds;
 
         internal ICache Cache { get { return CanTryRemote() ? TryGetRemoteCache() : GetLocalCache(); } }
 
