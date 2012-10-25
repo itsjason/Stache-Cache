@@ -8,16 +8,16 @@
     <applicationSettings>
 		<StacheCache.Properties.Settings>
 			<setting name="CacheRegionName" serializeAs="String">
-				<value>test</value>
+				<value></value>
 			</setting>
 			<setting name="CacheServers" serializeAs="String">
-				<value>10.194.240.28</value>
+				<value></value>
 			</setting>
 			<setting name="CacheName" serializeAs="String">
-				<value>test</value>
+				<value></value>
 			</setting>
 			<setting name="CacheTimeout" serializeAs="String">
-				<value>2000</value>
+				<value></value>
 			</setting>
 			<setting name="UseRemoteCache" serializeAs="String">
                 <value>False</value>
